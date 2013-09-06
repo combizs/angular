@@ -1,7 +1,12 @@
-function FirstCtrl($scope) {
-  // $scope.data = { message : "Biz" };
+var myApp = angular.module('myApp', []);
+myApp.factory('Data', function () {
+  return { message : "I'm from the future!" }
+})
+
+function FirstCtrl($scope, Data) {
+  $scope.data = Data;
 }
 
-function SecondCtrl($scope) {
-  // $scope.data = { message : "Biz" };
+function SecondCtrl($scope, Data) {
+  $scope.data = Data;
 }
