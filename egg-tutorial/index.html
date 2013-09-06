@@ -1,0 +1,22 @@
+<html>
+<head>
+  <title>Angular Data Binding</title>
+  <script src="main.js"></script>
+</head>
+<body>
+
+<!-- need ng-app to declare angular application -->
+<div ng-app="">
+  <div ng-controller="FirstCtrl">
+
+    <!-- add ng-model, value from this can be dispalyed in the view -->
+    <input type="text" ng-model="data.message" placeholder="Enter name">
+    
+    <!-- display value from model -->
+    <h1>Hello {{data.message}}</h1>
+  </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+</body>
+</html>
