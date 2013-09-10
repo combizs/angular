@@ -4,8 +4,8 @@ myApp.factory('Data', function () {
 })
 
 myApp.filter('reverse', function() {
-  return function() {
-    return "";
+  return function(text) {
+    return text.split("").reverse().join("");
   }
 })
 
