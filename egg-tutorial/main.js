@@ -2,7 +2,9 @@ var myApp = angular.module('superhero', []);
 
 myApp.directive("superman", function () {
   return {
-    restrict: "E",
-    template: "<div>Welcome</div>"
+    restrict: "C",
+    link: function (){
+      alert("I'm working");
+    }
   }
 });
