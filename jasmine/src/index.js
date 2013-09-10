@@ -3,8 +3,8 @@ myApp.factory('Data', function () {
   return { message : "I'm from the future!" }
 })
 
-myApp.filter('reverse', function() {
-  return function() {
+myApp.filter('reverse', function () {
+  return function () {
     return "";
   }
 })
