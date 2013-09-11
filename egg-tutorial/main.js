@@ -1,10 +1,17 @@
-var myApp = angular.module('superhero', []);
+var myApp = angular.module('behaviorApp', []);
 
-myApp.directive("superman", function () {
-  return {
-    restrict: "C",
-    link: function (){
-      alert("I'm working");
-    }
+myApp.directive("enter", function () {
+  return function (scope, element, attrs) {
+    element.bind("mouseenter", function (){
+      element.addClass(attrs.enter)
+    })
+  }
+});
+
+myApp.directive("leave", function () {
+  return function (scope, element, attrs) {
+    element.bind("mouseout", function (){
+      element.removeClass(attrs.enter)
+    })
   }
 });
