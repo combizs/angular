@@ -11,14 +11,14 @@ myApp.directive("dumbPassword", function () {
     template: "<div><input type=\"text\" ng-model=\"model.input\"></div>",
     compile: function (tElem) {
       tElem.append(validElement);
-    },
-    // link: function (scope, element) {
-    //   scope.$watch("model.input", function (value) {
-    //     if (value == "password") {
-    //       console.log("Change it!");
-    //       element.children(1).toggleClass("alert-box alert");
-    //     }
-    //   })
-    // }
+      return function (scope, element) {
+        scope.$watch("model.input", function (value) {
+          if (value == "password") {
+            console.log("Change it!");
+            element.children(1).toggleClass("alert-box alert");
+          }
+        })
+      }
+    }
   }
 });
