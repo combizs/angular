@@ -8,13 +8,7 @@
 
 <div ng-app="myApp">
   <!-- script is not working; only works from templateUrl -->
-  <script type="text/ng-template" id="t/zippy.html">
-    <div>
-      <h3 ng-click="toggleContent()">{{title}}</h3>
-      <div ng-show="isContentVisible" ng-transclude>
-      </div>
-    </div>
-  </script>
+
   <input type="text" ng-model="model.title">
   <input type="text" ng-model="model.content">
   <zippy title="{{model.title}}">
