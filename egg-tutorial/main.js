@@ -7,7 +7,7 @@ myApp.directive("zippy", function () {
     scope: {
       title: "@"
     },
-    templateUrl: 'zippy.html',
+    templateUrl: 't/zippy.html',
     link: function (scope) {
       scope.isContentVisible = false;
 
