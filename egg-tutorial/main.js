@@ -3,7 +3,8 @@ var myApp = angular.module('myApp', []);
 myApp.config(function ($routeProvider) {
   // Creates $route to be used in controller
   $routeProvider
-    .when('/',
+  // not a typical scenerio
+    .when('/:message',
       {
         templateUrl: "app.html",
         controller: "AppCtrl"
@@ -17,8 +18,8 @@ myApp.config(function ($routeProvider) {
     })
 })
 
-myApp.controller("AppCtrl", function ($scope, $route) {
+myApp.controller("AppCtrl", function ($scope, $routeParams) {
   $scope.model = {
-    message: "this is my message"
+    message: $routeParams.message
   }
 })
