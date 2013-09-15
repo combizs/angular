@@ -1,21 +1,15 @@
 var myApp = angular.module('myApp', []);
 
-myApp.directive("zippy", function ($templateCache) {
-  console.log($templateCache.get("zippy"));
-  return {
-    restrict: "E",
-    transclude: true,
-    scope: {
-      title: "@"
-    },
-    // templateUrl: $templateCache.get("zippy"),
-    templateUrl: 'zippy.html',
-    link: function (scope) {
-      scope.isContentVisible = false;
+myApp.config(function ($routeProvider) {
+  $routeProvider.when('/',
+  {
+    templateUrl: "app.html",
+    controller: "AppCtrl"
+  })
+})
 
-      scope.toggleContent = function () {
-        scope.isContentVisible = !scope.isContentVisible;
-      }
-    }
+myApp.controller("AppCtrl", function ($scope) {
+  $scope.model = {
+    message: "this is my message"
   }
-});
+})
