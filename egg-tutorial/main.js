@@ -1,13 +1,14 @@
 var myApp = angular.module('myApp', []);
 
-myApp.directive("zippy", function () {
+myApp.directive("zippy", function ($templateCache) {
+  console.log($templateCache.get("zippy.html"));
   return {
     restrict: "E",
     transclude: true,
     scope: {
       title: "@"
     },
-    templateUrl: 't/zippy.html',
+    templateUrl: 'zippy.html',
     link: function (scope) {
       scope.isContentVisible = false;
 
