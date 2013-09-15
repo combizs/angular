@@ -9,6 +9,7 @@ var mimeTypes = {
   "jpg": "image/jpeg",
   "png": "image/png",
   "js": "text/javascript",
+  // "script": "text/ng-template",
   "css": "text/css"};
 
 http.createServer(function(req, res) {
