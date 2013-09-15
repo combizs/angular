@@ -8,7 +8,7 @@ myApp.directive("zippy", function ($templateCache) {
     scope: {
       title: "@"
     },
-    // templateUrl: $templateCache.get("zippy.html"),
+    // templateUrl: $templateCache.get("zippy"),
     templateUrl: 'zippy.html',
     link: function (scope) {
       scope.isContentVisible = false;
