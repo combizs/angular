@@ -4,14 +4,11 @@ myApp.config(function ($routeProvider) {
   // Creates $route to be used in controller
   $routeProvider
   // not a typical scenerio
-    .when('/:message',
+    .when('/map/:country/:state/:city',
       {
         templateUrl: "app.html",
-        controller: "AppCtrl"
-      })
-    .when('/pizza',
-      {
-        template: 'Yum!'
+        controller: "AppCtrl",
+        message: "default"
       })
     .otherwise({
       template: 'Does not exist!'
@@ -20,6 +17,6 @@ myApp.config(function ($routeProvider) {
 
 myApp.controller("AppCtrl", function ($scope, $routeParams) {
   $scope.model = {
-    message: $routeParams.message
+    message: "Location is " + $routeParams.city + ", " + $routeParams.state + ", " + $routeParams.country
   }
 })
