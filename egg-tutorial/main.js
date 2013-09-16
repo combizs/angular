@@ -1,15 +1,7 @@
 var myApp = angular.module('myApp', []);
 
 myApp.config(function ($routeProvider) {
-  // Creates $route to be used in controller
   $routeProvider
-  // not a typical scenerio
-    .when('/map/:country/:state/:city',
-      {
-        templateUrl: "app.html",
-        controller: "AppCtrl",
-        message: "default"
-      })
     .when('/pizza/:crust/:topping',
       {
         redirectTo: function (routeParams, path, search) {
@@ -24,12 +16,26 @@ myApp.config(function ($routeProvider) {
       template: 'Deep Dish'
     })
     .otherwise({
-      // template: 'Does not exist!',
       redirectTo: '/'
     })
 })
 
 myApp.controller("AppCtrl", function ($scope, $routeParams) {
+  // loads from q library; handles promises
+  var defer = $q.promise
+
+  defer.promise
+    .then(function (value) {
+      alert("hello " + value)
+
+      return "biz"
+    })
+    .then(function (value) {
+      alert("what's up " + value)
+    })
+
+  defer.resolve("world")
+
   $scope.model = {
     message: "Location is " + $routeParams.city + ", " + $routeParams.state + ", " + $routeParams.country
   }
