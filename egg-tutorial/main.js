@@ -13,16 +13,17 @@ myApp.config(function ($routeProvider) {
       })
     .when('/deep',
     {
-      template: 'Deep Dish'
+      template: 'Deep Dish',
+      controller: 'AppCtrl'
     })
     .otherwise({
       redirectTo: '/'
     })
 })
 
-myApp.controller("AppCtrl", function ($scope, $routeParams) {
+myApp.controller("AppCtrl", function ($scope, $routeParams, $q) {
   // loads from q library; handles promises
-  var defer = $q.promise
+  var defer = $q.defer();
 
   defer.promise
     .then(function (value) {
