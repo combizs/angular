@@ -14,27 +14,33 @@ myApp.config(function ($routeProvider) {
     .when('/deep',
     {
       template: 'Deep Dish',
-      controller: 'AppCtrl'
+      controller: 'viewCtrl'
     })
     .otherwise({
       redirectTo: '/',
       template: 'hello',
       resolve: {
-        loadData: appCtrl.loadData
+        loadData: viewCtrl.loadData
       }
     })
 })
 
-var appCtrl = myApp.controller("AppCtrl", function ($scope, $routeParams) {
+myApp.controller("AppCtrl", function ($routeScope) {
+  $routeScope.$on("$routeChangeError", function () {
+    console.log("did not load page!")
+  })
+})
+
+var viewCtrl = myApp.controller("viewCtrl", function ($scope, $routeParams) {
   $scope.model = {
     message: "I am a great app!"
   }
 })
 
-appCtrl.loadData = function ($q, $timeout) {
+viewCtrl.loadData = function ($q, $timeout) {
   var defer = $q.defer();
   $timeout(function () {
-    defer.resolve();
+    defer.reject();
   }, 2000);
   return defer.promise;
 }
