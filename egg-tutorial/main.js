@@ -10,8 +10,22 @@ myApp.config(function ($routeProvider) {
         controller: "AppCtrl",
         message: "default"
       })
+    .when('/pizza/:crust/:topping',
+      {
+        redirectTo: function (routeParams, path, search) {
+          console.log(routeParams)
+          console.log(path)
+          console.log(search)
+          return "/" + routeParams.crust
+        }
+      })
+    .when('/deep',
+    {
+      template: 'Deep Dish'
+    })
     .otherwise({
-      template: 'Does not exist!'
+      // template: 'Does not exist!',
+      redirectTo: '/'
     })
 })
 
