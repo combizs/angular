@@ -17,27 +17,22 @@ myApp.config(function ($routeProvider) {
       controller: 'AppCtrl'
     })
     .otherwise({
-      redirectTo: '/'
+      redirectTo: '/',
+      template: 'hello',
+      resolve: {
+        app: function ($q, $timeout) {
+          var defer = $q.defer();
+          $timeout(function () {
+            defer.resolve();
+          }, 2000);
+          return defer.promise;
+        }
+      }
     })
 })
 
-myApp.controller("AppCtrl", function ($scope, $routeParams, $q) {
-  // loads from q library; handles promises
-  var defer = $q.defer();
-
-  defer.promise
-    .then(function (value) {
-      alert("hello " + value)
-
-      return "biz"
-    })
-    .then(function (value) {
-      alert("what's up " + value)
-    })
-
-  defer.resolve("world")
-
+myApp.controller("AppCtrl", function ($scope, $routeParams) {
   $scope.model = {
-    message: "Location is " + $routeParams.city + ", " + $routeParams.state + ", " + $routeParams.country
+    message: "I am a great app!"
   }
 })
