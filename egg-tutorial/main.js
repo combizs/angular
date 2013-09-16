@@ -20,19 +20,21 @@ myApp.config(function ($routeProvider) {
       redirectTo: '/',
       template: 'hello',
       resolve: {
-        app: function ($q, $timeout) {
-          var defer = $q.defer();
-          $timeout(function () {
-            defer.resolve();
-          }, 2000);
-          return defer.promise;
-        }
+        loadData: appCtrl.loadData
       }
     })
 })
 
-myApp.controller("AppCtrl", function ($scope, $routeParams) {
+var appCtrl = myApp.controller("AppCtrl", function ($scope, $routeParams) {
   $scope.model = {
     message: "I am a great app!"
   }
 })
+
+appCtrl.loadData = function ($q, $timeout) {
+  var defer = $q.defer();
+  $timeout(function () {
+    defer.resolve();
+  }, 2000);
+  return defer.promise;
+}
