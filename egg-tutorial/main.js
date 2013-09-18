@@ -1,24 +1,11 @@
 var myApp = angular.module('myApp', []);
 
-myApp.config(function ($routeProvider) {
-  $routeProvider
-    .when('/pizza/:crust/:topping',
-      {
-        redirectTo: function (routeParams, path, search) {
-          console.log(routeParams)
-          console.log(path)
-          console.log(search)
-          return "/" + routeParams.crust
-        }
-      })
-    .when('/deep',
+myApp.config(function ($routeProvide) {
+  $routeProvide
+    .when('/',
     {
-      template: 'Deep Dish',
-      controller: 'viewCtrl'
-    })
-    .otherwise({
-      redirectTo: '/',
-      template: 'hello',
+      templateUrl: 'app.html',
+      controller: 'ViewCtrl',
       resolve: {
         loadData: viewCtrl.loadData
       }
@@ -31,7 +18,8 @@ myApp.controller("AppCtrl", function ($routeScope) {
   })
 })
 
-var viewCtrl = myApp.controller("viewCtrl", function ($scope, $routeParams) {
+var viewCtrl = myApp.controller("ViewCtrl", function ($scope, $route) {
+  console.log($route);
   $scope.model = {
     message: "I am a great app!"
   }
@@ -40,7 +28,7 @@ var viewCtrl = myApp.controller("viewCtrl", function ($scope, $routeParams) {
 viewCtrl.loadData = function ($q, $timeout) {
   var defer = $q.defer();
   $timeout(function () {
-    defer.reject();
+    defer.resolve();
   }, 2000);
   return defer.promise;
 }
